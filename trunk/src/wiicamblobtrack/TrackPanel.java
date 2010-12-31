@@ -16,9 +16,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.Timer;
-
+import java.awt.Dimension;
 
 /**
  *
@@ -52,12 +50,18 @@ public class TrackPanel extends javax.swing.JPanel {
     public void paint(Graphics g) {
         super.paint(g);
 
+        Dimension size = getSize();
+        double ratioX = (double) size.getWidth() / 1023.0;
+        double ratioY = (double) size.getHeight() / 768.0;
+
         Graphics2D g2d = (Graphics2D) g;
+        g2d.scale(ratioX, ratioY);
 
         for (int i=0; i < 4; i++) {
-            if (b[i].isVisible())
-                g2d.drawImage(b[i].getImage(), b[i].getX()-12, b[i].getY()-12, this);
+            if (b[i].isVisible()) {
+                g2d.drawImage(b[i].getImage(), 1023 - b[i].getX(), b[i].getY(), this);
                 // TODO: encapsulate x, y & image size in Blob
+            }
         }
         
         Toolkit.getDefaultToolkit().sync();
@@ -78,17 +82,19 @@ public class TrackPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        setMaximumSize(new java.awt.Dimension(640, 480));
+        setMinimumSize(new java.awt.Dimension(640, 480));
         setName("Form"); // NOI18N
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 400, Short.MAX_VALUE)
+            .add(0, 640, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 300, Short.MAX_VALUE)
+            .add(0, 480, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

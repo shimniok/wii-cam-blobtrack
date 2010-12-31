@@ -12,12 +12,15 @@ import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.Point;
+import java.awt.Rectangle;
 import javax.swing.Timer;
 import javax.swing.Icon;
 //import javax.swing.JDialog;
 //import javax.swing.JFrame;
-//import java.awt.Dimension;
+import java.awt.Dimension;
 
 import org.jdesktop.application.Action;
 import org.jdesktop.application.SingleFrameApplication;
@@ -168,6 +171,7 @@ public class WiiCamBlobTrackView extends FrameView {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         mainPanel = new javax.swing.JPanel();
         trackPanel1 = new wiicamblobtrack.TrackPanel();
@@ -182,42 +186,37 @@ public class WiiCamBlobTrackView extends FrameView {
         statusAnimationLabel = new javax.swing.JLabel();
         progressBar = new javax.swing.JProgressBar();
 
-        mainPanel.setMinimumSize(new java.awt.Dimension(550, 550));
+        mainPanel.setMaximumSize(new java.awt.Dimension(32768, 32768));
+        mainPanel.setMinimumSize(new java.awt.Dimension(680, 500));
         mainPanel.setName("mainPanel"); // NOI18N
-        mainPanel.setPreferredSize(new java.awt.Dimension(550, 550));
+        mainPanel.setPreferredSize(new java.awt.Dimension(680, 500));
+        mainPanel.setLayout(new java.awt.GridBagLayout());
 
+        trackPanel1.setDoubleBuffered(true);
+        trackPanel1.setMaximumSize(new java.awt.Dimension(640, 480));
+        trackPanel1.setMinimumSize(new java.awt.Dimension(640, 480));
         trackPanel1.setName("trackPanel1"); // NOI18N
-        trackPanel1.setPreferredSize(new java.awt.Dimension(1023, 1023));
+        trackPanel1.setPreferredSize(new java.awt.Dimension(640, 480));
 
         org.jdesktop.layout.GroupLayout trackPanel1Layout = new org.jdesktop.layout.GroupLayout(trackPanel1);
         trackPanel1.setLayout(trackPanel1Layout);
         trackPanel1Layout.setHorizontalGroup(
             trackPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 500, Short.MAX_VALUE)
+            .add(0, 640, Short.MAX_VALUE)
         );
         trackPanel1Layout.setVerticalGroup(
             trackPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 500, Short.MAX_VALUE)
+            .add(0, 480, Short.MAX_VALUE)
         );
 
-        org.jdesktop.layout.GroupLayout mainPanelLayout = new org.jdesktop.layout.GroupLayout(mainPanel);
-        mainPanel.setLayout(mainPanelLayout);
-        mainPanelLayout.setHorizontalGroup(
-            mainPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(mainPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(trackPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 500, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
-        mainPanelLayout.setVerticalGroup(
-            mainPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(mainPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(trackPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 500, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
+        mainPanel.add(trackPanel1, gridBagConstraints);
 
         menuBar.setName("menuBar"); // NOI18N
+        menuBar.setPreferredSize(new java.awt.Dimension(550, 22));
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(wiicamblobtrack.WiiCamBlobTrackApp.class).getContext().getResourceMap(WiiCamBlobTrackView.class);
         fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
@@ -255,11 +254,11 @@ public class WiiCamBlobTrackView extends FrameView {
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
             statusPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(statusPanelSeparator, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+            .add(statusPanelSeparator, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
             .add(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(statusMessageLabel)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 354, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 604, Short.MAX_VALUE)
                 .add(progressBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(statusAnimationLabel)

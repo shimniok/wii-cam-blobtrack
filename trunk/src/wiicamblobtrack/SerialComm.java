@@ -24,7 +24,7 @@ public class SerialComm {
             CommPortIdentifier cpi = CommPortIdentifier.getPortIdentifier(serialPortName);
 
             port = (SerialPort) cpi.open("Serial Port", 3000);
-            port.setSerialPortParams(38400, SerialPort.DATABITS_8,
+            port.setSerialPortParams(115200, SerialPort.DATABITS_8,
                                             SerialPort.STOPBITS_1,
                                             SerialPort.PARITY_NONE);
             port.setFlowControlMode(SerialPort.FLOWCONTROL_NONE);
@@ -42,8 +42,8 @@ public class SerialComm {
     public String getLine() throws IOException {
         String line;
         line = reader.readLine();
-        if (line != null)
-            System.out.println("line: "+line);
+        //if (line != null)
+          //  System.out.println("line: "+line);
         return line;
     }
 
